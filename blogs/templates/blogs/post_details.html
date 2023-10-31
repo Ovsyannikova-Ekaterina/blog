@@ -1,0 +1,26 @@
+{% extends "blogs/../blogs/../blogs/base.html" %}
+
+{% block page_header %}
+    <h1>Post Details</h1>
+{% endblock page_header %}
+
+{% block content %}
+    <div class="card">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <h4>{{ post.title }}</h4>
+                <p>{{ post.text }}</p>
+                <p>Author: {{ post.author }}</p>
+                <p>Date: {{ post.date_added }}</p>
+                {% if user.is_authenticated %}
+                    {% if user == post.author %}
+                        <a class="btn btn-primary" href="{% url 'blogs:edit_post' post.id %}">Edit</a>
+                        <a class="btn btn-danger" href="{% url 'blogs:delete_post' post.id %}">Delete</a>
+                    {% endif %}
+                {% endif %}
+            </li>
+        </ul>
+    </div>
+    <br>
+    <a class="btn btn-outline-info" href="{% url 'blogs:home' %}">Back to Posts</a>
+{% endblock content %}

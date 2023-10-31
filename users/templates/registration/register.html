@@ -1,0 +1,44 @@
+{% extends "blogs/../../../blogs/templates/blogs/../../../blogs/templates/blogs/../../../blogs/templates/blogs/../../../blogs/templates/blogs/../../../blogs/templates/blogs/base.html" %}
+{% block content %}
+    <style>
+        .card-header-custom {
+            background-color: #0d6efd;
+            color: #fff;
+        }
+    </style>
+    <div class="container mt-5">  <!-- Изменили на container -->
+        <div class="row">
+            <div class="col-md-6 mx-auto">  <!-- Изменили на col-md-6 mx-auto -->
+                <div class="card">
+                    <div class="card-header bg-primary text-white card-header-custom">  <!-- Изменили на bg-primary text-white -->
+                        <h2 class="mb-0 text-center">Sign Up</h2>  <!-- Добавили text-center -->
+                    </div>
+                    <div class="card-body">
+                        <form method="post" action="{% url 'users:register' %}">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <input type="text" name="username" class="form-control" placeholder="Username" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="password" name="password1" class="form-control" placeholder="Password" required>
+                                <small class="form-text text-muted">
+                                    Your password can’t be too similar to your other personal information.<br>
+                                    Your password must contain at least 8 characters.<br>
+                                    Your password can’t be a commonly used password.<br>
+                                    Your password can’t be entirely numeric.
+                                </small>
+                            </div>
+                            <div class="mb-3">
+                                <input type="password" name="password2" class="form-control" placeholder="Password confirmation" required>
+                            </div>
+                            <div class="text-center">
+                                <button name="submit" class="btn btn-primary">Sign Up</button>
+                            </div>
+                            <input type="hidden" name="next" value="{% url 'blogs:home' %}"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

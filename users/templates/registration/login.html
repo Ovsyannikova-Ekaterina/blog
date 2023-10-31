@@ -1,0 +1,35 @@
+{% extends "blogs/../../../blogs/templates/blogs/../../../blogs/templates/blogs/../../../blogs/templates/blogs/../../../blogs/templates/blogs/../../../blogs/templates/blogs/base.html" %}
+{% load widget_tweaks %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card">
+                <div class="card-header bg-primary text-white text-center">  <!-- Добавили text-center -->
+                    <h2 class="mb-0">Log In</h2>
+                </div>
+                <div class="card-body">
+                    {% if form.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            Your username and password didn't match. Please try again.
+                        </div>
+                    {% endif %}
+                    <form method="post" action="{% url 'users:login' %}" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <input type="text" name="username" class="form-control" placeholder="Username" required>  <!-- Изменили поле ввода username -->
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" name="password" class="form-control" placeholder="Password" required>  <!-- Изменили поле ввода password -->
+                        </div>
+                        <div class="text-center">  <!-- Добавили text-center -->
+                            <button name="submit" class="btn btn-primary">Log In</button>
+                        </div>
+                        <input type="hidden" name="next" value="{% url 'blogs:home' %}"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

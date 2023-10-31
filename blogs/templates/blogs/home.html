@@ -1,0 +1,26 @@
+{% extends "blogs/base.html" %}
+
+{% block page_header %}
+    <h1>Posts</h1>
+{% endblock page_header %}
+
+{% block content %}
+    {% for post in posts %}
+        <div class="card" style="width: 100%;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <a href="{% url 'blogs:post_details' post.id %}">
+                        <h4>{{ post.title }}</h4>
+                    </a>
+                    <p>{{ post.text }}</p>
+                    <p>Author: {{ post.author }}</p>
+                    <p>Date: {{ post.date_added }}</p>
+                </li>
+            </ul>
+        </div>
+    {% empty %}
+        <li><h4>No post ¯\_(ツ)_/¯</h4></li>
+    {% endfor %}
+    <br>
+    <a class="btn btn-outline-info" href="{% url 'blogs:new_post' %}">New post</a>
+{% endblock content %}

@@ -1,0 +1,19 @@
+{% extends "blogs/../blogs/../blogs/base.html" %}
+{% block page_header %}
+    <h1>My Posts</h1>
+{% endblock page_header %}
+
+{% block content %}
+    <div class="list-group">
+        {% for post in user_posts %}
+            <a href="{% url 'blogs:post_details' post.id %}" class="list-group-item list-group-item-action">
+                <h4 class="list-group-item-heading">{{ post.title }}</h4>
+                <p class="list-group-item-text">{{ post.text }}</p>
+                <p class="list-group-item-text">Author: {{ post.author }}</p>
+                <p class="list-group-item-text">Date Added: {{ post.date_added }}</p>
+            </a>
+        {% empty %}
+            <p>No posts yet.</p>
+        {% endfor %}
+    </div>
+{% endblock content %}
