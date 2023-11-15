@@ -1,26 +1,26 @@
-{% extends "blogs/../blogs/../blogs/base.html" %}
+{% extends "blogs/base.html" %}
 {% load bootstrap4 %}
-
 
 {% block page_header %}
     <h1>Edit Post</h1>
 {% endblock page_header %}
 
 {% block content %}
+
     <form method="post"
-          action="{% url 'edit_post' post.id %}"
+          action="{% url 'blogs:edit_post' post.id %}"
           class="form">
 
         {% csrf_token %}
         {% bootstrap_form form %}
 
-    {% buttons %}
-    <button name="submit" class="btn btn-primary">Save</button>
-    {% endbuttons %}
+        {% buttons %}
+            <button name="submit" class="btn btn-primary">Save</button>
+        {% endbuttons %}
 
-        <a class="btn btn-secondary" href="{% url 'post_details' post.id %}">Save without changes</a>
+        <a class="btn btn-secondary" href="{% url 'blogs:post_details' post.id %}">Save  иии</a>
     </form>
-        <input type="hidden" name="next" value="{% url 'post_details' post.id %}"/>
 
+    <input type="hidden" name="next" value="{% url 'blogs:post_details' post.id %}"/>
 
 {% endblock content %}

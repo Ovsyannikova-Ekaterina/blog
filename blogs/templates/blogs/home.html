@@ -1,4 +1,5 @@
 {% extends "blogs/base.html" %}
+{% load bootstrap4 %}
 
 {% block page_header %}
     <h1>Posts</h1>
@@ -19,7 +20,7 @@
             </ul>
         </div>
     {% empty %}
-        <li><h4>No post ¯\_(ツ)_/¯</h4></li>
+        <li><h4>No post</h4></li>
     {% endfor %}
     <br>
     <a class="btn btn-outline-info" href="{% url 'blogs:new_post' %}">New post</a>

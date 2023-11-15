@@ -4,18 +4,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta content="ie=edge">
     <title>Blog</title>
     {% bootstrap_css %}
     {% bootstrap_javascript jquery='full' %}
 </head>
+
 <body>
 <nav class="navbar navbar-expand-md navbar-light bg-light mb-4 border">
     <a class="navbar-brand" href="{% url 'blogs:home' %}">Blog</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarCollapse" aria-controls="navbarCollapse"
+            aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -24,6 +25,7 @@
                 <a class="nav-link" href="{% url 'blogs:my_posts' %}">My posts</a>
             </li>
         </ul>
+
         <ul class="navbar-nav ml-auto">
             {% if user.is_authenticated %}
                 <li class="nav-item">
@@ -41,10 +43,10 @@
                 </li>
             {% endif %}
         </ul>
+
     </div>
 </nav>
 
-<!-- Main content -->
 <main role="main" class="container">
     <div class="pb-2 mb-2 border-bottom">
         {% block page_header %}{% endblock page_header %}
@@ -53,5 +55,6 @@
         {% block content %}{% endblock content %}
     </div>
 </main>
+
 </body>
 </html>
